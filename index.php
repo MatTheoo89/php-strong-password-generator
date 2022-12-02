@@ -8,18 +8,27 @@
 
     $symbol = [ '!', '?', '&', '%', '$', '<', '>', '^', '+', '-', '*', '/', '(', ')', '[', ']', '{', '}', '@', '#', '_', '=' ];
 
-    $for_generator = array_merge($letter_lower, $letter_upper, $number, $symbol);
+    $arr_merge = array_merge($letter_lower, $letter_upper, $number, $symbol);
 
-    generatorPsw($_GET['lunghezza']);
+    $string_merge = implode('', $arr_merge);
+
+    //var_dump($string_merge);
     
-    function generatorPsw($lunghezza){
+    $psw_generate = generatorPsw($_GET['lunghezza'], $string_merge);
+    
+    function generatorPsw($lunghezza, $string){
+        $psw = '';
+        // var_dump($lunghezza);
+        // var_dump($string);
         for ($i = 0; $i <= $lunghezza; $i++) {
-            var_dump('test');
+            $index = rand(0, strlen($string) - 1);
+            $psw .= $string[$index];
+
+        };
+            // var_dump($psw);
+            return $psw;
     };
-};
-
-    //var_dump($_GET);
-
+    
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +42,7 @@
 
     <style>
         body{
-            background-color: #39f;
+            background-color: #333;
             height: 100vh;
             width: 100%;
             color: #000;
@@ -53,16 +62,22 @@
         </div>
 
         <div class="row">
-
-        <div class="col">
-
-        <div class="alert alert-info  fw-bold" role="alert">
-                    Scegliere una password con un minimo di 8 ed un massimo di 32 caratteri
+<?php if(!empty($psw_generate)):?>
+            <div class="col">
+                <div class="alert alert-success fw-bold text-center fs-3" role="alert">
+                    <?php echo $psw_generate?>
                 </div>
-
-                <div class="alert alert-danger  fw-bold" role="alert">
-                    A simple danger alert—check it out!
-                </div>
+<?php endif;?>
+<!-- ! QUESTO È UN IF -->
+<div class="alert alert-info  fw-bold" role="alert">
+    Scegliere una password con un minimo di 8 ed un massimo di 32 caratteri
+</div>
+<!-- ! QUESTO È UN IF -->
+<!-- ! QUESTO È ELSE  di base non si vede-->
+<div class="alert alert-danger fw-bold" role="alert">
+    ERRORE
+</div>
+<!-- ! QUESTO È ELSE -->
 
             </div>
         </div>
