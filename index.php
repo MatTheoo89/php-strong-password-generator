@@ -13,8 +13,10 @@
     $string_merge = implode('', $arr_merge);
 
     //var_dump($string_merge);
+
+    $psw_lenght = $_GET['lunghezza'] ?? '';
     
-    $psw_generate = generatorPsw($_GET['lunghezza'], $string_merge);
+    $psw_generate = generatorPsw($psw_lenght, $string_merge);
     
     function generatorPsw($lunghezza, $string){
         $psw = '';
@@ -28,6 +30,8 @@
             // var_dump($psw);
             return $psw;
     };
+
+    //var_dump($psw_lenght);
     
 ?>
 
@@ -62,23 +66,15 @@
         </div>
 
         <div class="row">
-<?php if(!empty($psw_generate)):?>
             <div class="col">
+<?php if(!empty($psw_lenght)) :?>
                 <div class="alert alert-success fw-bold text-center fs-3" role="alert">
                     <?php echo $psw_generate?>
                 </div>
 <?php endif;?>
-<!-- ! QUESTO È UN IF -->
-<div class="alert alert-info  fw-bold" role="alert">
-    Scegliere una password con un minimo di 8 ed un massimo di 32 caratteri
-</div>
-<!-- ! QUESTO È UN IF -->
-<!-- ! QUESTO È ELSE  di base non si vede-->
-<div class="alert alert-danger fw-bold" role="alert">
-    ERRORE
-</div>
-<!-- ! QUESTO È ELSE -->
-
+                <div class="alert alert-info  fw-bold" role="alert">
+                    Scegliere una password con un minimo di 8 ed un massimo di 32 caratteri
+                </div>
             </div>
         </div>
 
