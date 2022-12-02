@@ -19,15 +19,18 @@
     $psw_generate = generatorPsw($psw_lenght, $string_merge);
     
     function generatorPsw($lunghezza, $string){
+        // creo variabile come stringa vuota per la psw
         $psw = '';
-        // var_dump($lunghezza);
-        // var_dump($string);
+
+        // ciclo fino al valore inserito in input
         for ($i = 0; $i <= $lunghezza; $i++) {
+            // creo la variabile index e gli assegno un numero RANDOM (MIN => 0 | MAX=> la lunghezza stringa - 1)
             $index = rand(0, strlen($string) - 1);
+            //concateno usando i numeri random come index nella stringa con i valori
             $psw .= $string[$index];
 
         };
-            // var_dump($psw);
+            // esporto la stringa psw competa
             return $psw;
     };
 
