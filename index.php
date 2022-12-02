@@ -7,6 +7,19 @@
     $number = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ];
 
     $symbol = [ '!', '?', '&', '%', '$', '<', '>', '^', '+', '-', '*', '/', '(', ')', '[', ']', '{', '}', '@', '#', '_', '=' ];
+
+    $for_generator = array_merge($letter_lower, $letter_upper, $number, $symbol);
+
+    generatorPsw($_GET['lunghezza']);
+    
+    function generatorPsw($lunghezza){
+        for ($i = 0; $i <= $lunghezza; $i++) {
+            var_dump('test');
+    };
+};
+
+    //var_dump($_GET);
+
 ?>
 
 <!DOCTYPE html>
@@ -20,14 +33,14 @@
 
     <style>
         body{
-            background-color: #03045e;
+            background-color: #39f;
             height: 100vh;
             width: 100%;
             color: #000;
         }
     </style>
 </head>
-<body class="d-flex justify-content-center align-items-center">
+<body class="d-flex justify-content-center align-items-center flex-column">
 
     <div class="container">
 
@@ -62,7 +75,7 @@
                             </div>
                             <div class="col-5">
                             <div class="">
-                                    <input type="number" class="form-control w-50"          id="exampleFormControlInput1">
+                                    <input type="number" class="form-control w-50" name="lunghezza" id="exampleFormControlInput1" min="8" max="32">
                                 </div>
                             </div>
                         </div>
@@ -110,7 +123,7 @@
                         <div class="row">
                             <div class="col">
                                 <button type="submit" class="btn btn-primary ms-3 me-2">Invia</button>
-                                <button type="button" class="btn btn-secondary">Anulla</button>
+                                <button type="reset" class="btn btn-secondary">Anulla</button>
 
                             </div>
                         </div>
